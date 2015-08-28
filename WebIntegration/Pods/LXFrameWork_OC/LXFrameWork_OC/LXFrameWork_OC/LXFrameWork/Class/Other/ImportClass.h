@@ -40,6 +40,8 @@
 #import "AppDelegate.h"
 #import "LXSingleton.h"
 #import "LXFrameWorkConst.h"
+#import "CoreLocationTool.h"
+#import "UserAddressModel.h"
 
 #import <FMDB.h>
 #import <PureLayout.h>

@@ -136,6 +136,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (!self.dataList.count) return 0;
+    if (![self.dataList[section] isKindOfClass:[BaseCellItemGroup class]]) return 0;
     BaseCellItemGroup *group = self.dataList[section];
     if (group.headView) {
         return group.headView.height;
@@ -147,6 +149,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (!self.dataList.count) return 0;
+    if (![self.dataList[section] isKindOfClass:[BaseCellItemGroup class]]) return 0;
     BaseCellItemGroup *group = self.dataList[section];
     if (group.footerView) {
         return group.footerView.height;

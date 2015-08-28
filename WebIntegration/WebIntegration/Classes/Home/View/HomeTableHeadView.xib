@@ -86,6 +86,12 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="city" destination="Pxr-Nd-mho" id="Itl-Et-Dpf"/>
+                <outlet property="pm25" destination="dcf-Ge-27O" id="fY1-Mk-IAn"/>
+                <outlet property="temperature" destination="K1W-kw-J2O" id="5OV-18-Fpr"/>
+                <outlet property="wind" destination="GFC-Ur-fuK" id="E4S-0f-Hyl"/>
+            </connections>
             <point key="canvasLocation" x="535" y="144"/>
         </view>
     </objects>

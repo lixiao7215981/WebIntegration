@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E57EBDF1B8DC90B00AAFC49 /* DetailWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57EBDE1B8DC90B00AAFC49 /* DetailWebViewController.m */; };
+		4E57EBE41B8DD0F500AAFC49 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E57EBE31B8DD0F500AAFC49 /* CoreLocation.framework */; };
 		4EE1A16B1B8D4E0100A84CB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EE1A16A1B8D4E0100A84CB8 /* Images.xcassets */; };
 		4EE1A17A1B8D4E0100A84CB8 /* WebIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1A1791B8D4E0100A84CB8 /* WebIntegrationTests.m */; };
 		4EE1A1A51B8D4E9700A84CB8 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1A1871B8D4E9700A84CB8 /* HomeTableViewController.m */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E57EBDD1B8DC90B00AAFC49 /* DetailWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWebViewController.h; sourceTree = "<group>"; };
+		4E57EBDE1B8DC90B00AAFC49 /* DetailWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWebViewController.m; sourceTree = "<group>"; };
+		4E57EBE31B8DD0F500AAFC49 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4EE1A15A1B8D4E0100A84CB8 /* WebIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE1A16A1B8D4E0100A84CB8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4EE1A1731B8D4E0100A84CB8 /* WebIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E57EBE41B8DD0F500AAFC49 /* CoreLocation.framework in Frameworks */,
 				4EE1A1AC1B8D4E9700A84CB8 /* PgySDK.framework in Frameworks */,
 				BBE6CF6661D6BF6347736040 /* libPods.a in Frameworks */,
 			);
@@ -156,6 +162,8 @@
 			children = (
 				4EE1A1861B8D4E9700A84CB8 /* HomeTableViewController.h */,
 				4EE1A1871B8D4E9700A84CB8 /* HomeTableViewController.m */,
+				4E57EBDD1B8DC90B00AAFC49 /* DetailWebViewController.h */,
+				4E57EBDE1B8DC90B00AAFC49 /* DetailWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 		D6D4FAD8F185D1CF9AC55728 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E57EBE31B8DD0F500AAFC49 /* CoreLocation.framework */,
 				8E7E8F86DC7A4FF68D347CD5 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -419,6 +428,7 @@
 			files = (
 				4EE1A1AF1B8D4E9700A84CB8 /* main.m in Sources */,
 				4EE1A1AD1B8D4E9700A84CB8 /* AppDelegate.m in Sources */,
+				4E57EBDF1B8DC90B00AAFC49 /* DetailWebViewController.m in Sources */,
 				4EE1A1A71B8D4E9700A84CB8 /* HomePurifierTableViewCell.m in Sources */,
 				4EE1A1B51B8D54EE00A84CB8 /* HomeWebTableViewCell.m in Sources */,
 				4EE1A1A51B8D4E9700A84CB8 /* HomeTableViewController.m in Sources */,

@@ -1,21 +1,16 @@
 //
-//  HomeWebTableViewCell.h
+//  DetailWebViewController.h
 //  WebIntegration
 //
 //  Created by 李晓 on 15/8/26.
 //  Copyright (c) 2015年 skyware. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseWebViewController.h"
 
-@interface HomeWebTableViewCell : UITableViewCell
-
-+ (instancetype) createTableViewCell;
-
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@interface DetailWebViewController : BaseWebViewController
 
 // 设备信息
 @property (nonatomic,strong) SkywareDeviceInfoModel *deviceInfo;
-
 
 @end

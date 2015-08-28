@@ -33,7 +33,7 @@
     
     // 设置 App_id
     SkywareInstanceModel *skywareInstance = [SkywareInstanceModel sharedSkywareInstanceModel];
-    skywareInstance.app_id = 2;
+    skywareInstance.app_id = 1;
     
     SkywareUIInstance *UIM = [SkywareUIInstance sharedSkywareUIInstance];
     UIM.All_button_bgColor = [UIColor blueColor];

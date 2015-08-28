@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SkywareDeviceManagement.h"
 
+typedef enum {
+    getDeviceInfo = 1,
+    getWeather,
+    sendCmd,
+    definal
+}WebType;
+
 @interface SkywareJSApiTool : NSObject
 
 /**
@@ -18,7 +25,7 @@
  *
  *  @return 是否允许WebView 继续加载操作
  */
-- (BOOL) JSApiSubStringRequestWith:(NSURLRequest *) request;
+- (BOOL) JSApiSubStringRequestWith:(NSURLRequest *) request WebView:(UIWebView *) webView DeviceInfo:(SkywareDeviceInfoModel *) deviceInfo;
 
 /**
  *  查询设备信息
@@ -33,7 +40,7 @@
  *  @param message 错误信息
  *  @param webView 推送到 WebView
  */
-- (void)onGotCurDevInfoJsonStr:(NSString *) jsonStr Code:(NSString *) code Message:(NSString *) message ToWebView:(UIWebView *) webView;
+- (void)onGotCurDevInfoJsonStr:(NSString *) jsonStr Type:(NSString *) type ToWebView:(UIWebView *) webView;
 
 /**
  *  MQTT 推送消息给 WebView
