@@ -15,11 +15,12 @@
 #import "DetailWebViewController.h"
 #import <MQTTClient/MQTTClient.h>
 
-@interface HomeTableViewController ()<UITableViewDelegate,UITableViewDataSource,MQTTSessionDelegate>
+@interface HomeTableViewController ()<MQTTSessionDelegate>
 {
     CoreLocationTool *locationTool;
     MQTTSession *_secction;
     SkywareJSApiTool *_jsApiTool;
+    BOOL isExample;
 }
 @end
 
@@ -51,15 +52,10 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
     
 }
 
-// 订阅MQTT
-- (void)connectMQTTWithMAC:(NSString *) mac
-{
-    [_secction subscribeToTopic:kTopic(mac) atLevel:MQTTQosLevelAtLeastOnce];
-}
-
 #pragma mark - MQTT ----Delegate
 - (void)newMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(unsigned int)mid
 {
+    NSLog(@"--Cell_MQTT:%@",[data JSONString]);
     SkywareMQTTModel *model = [SkywareMQTTTool conversionMQTTResultWithData:data];
     NSArray *cells = [self.tableView visibleCells];
     [cells enumerateObjectsUsingBlock:^(HomeWebTableViewCell *cell, NSUInteger idx, BOOL *stop) {
@@ -72,19 +68,29 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 - (void)getUserBindDevices
 {
     [SkywareDeviceManagement DeviceGetAllDevicesSuccess:^(SkywareResult *result) {
+        isExample = NO;
+        [self.dataList removeAllObjects];
         NSArray *deviceArray = [SkywareDeviceInfoModel objectArrayWithKeyValuesArray:result.result];
         [deviceArray enumerateObjectsUsingBlock:^(SkywareDeviceInfoModel *dev, NSUInteger idx, BOOL *stop) {
-            BaseCellItemGroup *group = [BaseCellItemGroup createGroupWithHeadTitle:@"设备清单" AndFooterTitle:nil OrItem:nil];
+            BaseCellItemGroup *group = nil;
+            if (!idx) {
+                group = [BaseCellItemGroup createGroupWithHeadTitle:@"设备清单" AndFooterTitle:nil OrItem:nil];
+            }else{
+                UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
+                headView.backgroundColor = [UIColor clearColor];
+                group = [BaseCellItemGroup createGroupWithHeadView:headView AndFootView:nil OrItem:nil];
+            }
             [group addObjectWith:dev];
-            [self connectMQTTWithMAC:dev.device_mac];
+            [_secction subscribeToTopic:kTopic(dev.device_mac) atLevel:MQTTQosLevelAtLeastOnce];
             [self.dataList addObject:group];
         }];
         [self.tableView reloadData];
     } failure:^(SkywareResult *result) {
+        isExample = YES;
         [self.dataList removeAllObjects];
-        BaseArrowCellItem *cell1 = [BaseArrowCellItem createBaseCellItemWithIcon:nil AndTitle:@"Test" SubTitle:nil ClickOption:nil];
-        BaseCellItemGroup *group1 = [BaseCellItemGroup createGroupWithHeadTitle:@"示例设备" AndFooterTitle:nil OrItem:@[cell1]];
-        [self.dataList addObject:group1];
+        BaseArrowCellItem *item = [BaseArrowCellItem createBaseCellItemWithIcon:nil AndTitle:nil SubTitle:nil ClickOption:nil];
+        BaseCellItemGroup *group = [BaseCellItemGroup createGroupWithHeadTitle:@"示例设备" AndFooterTitle:nil OrItem:@[item]];
+        [self.dataList addObject:group];
         [self.tableView reloadData];
     }];
 }
@@ -114,25 +120,21 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataList.count;
-}
-
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeTableViewCell];
     if (cell == nil) {
         cell = [HomeWebTableViewCell createTableViewCell];
     }
+    if (isExample) {
+        cell.URLString = @"http://wx.skyware.com.cn/demofurnace/examplebar.html";
+        
+    }else{
+        cell.URLString = @"http://wx.skyware.com.cn/demofurnace/bar.html";
+        BaseCellItemGroup *group = self.dataList[indexPath.section];
+        cell.deviceInfo = [group.item firstObject];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    BaseCellItemGroup *group = self.dataList[indexPath.row];
-    cell.deviceInfo = [group.item firstObject];
     return cell;
 }
 
@@ -144,9 +146,15 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailWebViewController *detail = [[DetailWebViewController alloc] init];
-    BaseCellItemGroup *group = self.dataList[indexPath.row];
-    detail.deviceInfo = [group.item firstObject];
-    [self.navigationController pushViewController:detail animated:YES];
+    if (isExample) {
+        detail.URLString = @"http://wx.skyware.com.cn/demofurnace/exampleindex.html";
+        [self.navigationController pushViewController:detail animated:YES];
+    }else{
+        detail.URLString = @"http://wx.skyware.com.cn/demofurnace/index.html";
+        BaseCellItemGroup *group = self.dataList[indexPath.section];
+        detail.deviceInfo = [group.item firstObject];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 

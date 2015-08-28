@@ -41,7 +41,12 @@
             model.city = userAddress.City;
             model.district = userAddress.SubLocality;
             [SkywareOthersManagement UserAddressWeatherParamesers:model Success:^(SkywareResult *result) {
-                
+                SkywareAddressWeatherModel *weath = [SkywareAddressWeatherModel objectWithKeyValues:result.result];
+                self.city.text = weath.area_name;
+                self.temperature.text = weath.temperature;
+                self.pm25.text = [NSString stringWithFormat:@"%@·%@",weath.aqi,weath.aqiQuality];
+                self.pm25.backgroundColor = weath.aqiBgColor;
+                self.wind.text = [NSString stringWithFormat:@"%@%@ | 湿度%@",weath.wind_direct,weath.wind_power,weath.humidity];
             } failure:^(SkywareResult *result) {
                 NSLog(@"%@",result);
             }];

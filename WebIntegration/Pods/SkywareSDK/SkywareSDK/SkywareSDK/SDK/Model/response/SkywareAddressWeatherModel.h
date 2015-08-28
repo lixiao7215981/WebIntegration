@@ -26,5 +26,34 @@
  *  空气质量指数
  */
 @property (nonatomic,copy) NSString *aqi;
+/**
+ *  风向
+ */
+@property (nonatomic,copy) NSString *wind_direct;
+
+/**
+ *  风速
+ */
+@property (nonatomic,copy) NSString *wind_power;
+
+/**
+ *  城市名称
+ */
+@property (nonatomic,copy) NSString *area_name;
+
+
+// ------------------服务器不返回，只是自己转换------------------------
+/**
+ *  aqi空气质量
+ */
+@property (nonatomic,copy) NSString *aqiQuality;
+/**
+ *  PM2.5空气质量
+ */
+@property (nonatomic,copy) NSString *PM25Quality;
+/**
+ *  aqi 北京颜色Color
+ */
+@property (nonatomic,strong) UIColor *aqiBgColor;
 
 @end

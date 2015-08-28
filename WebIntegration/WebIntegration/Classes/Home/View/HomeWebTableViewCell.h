@@ -10,12 +10,23 @@
 
 @interface HomeWebTableViewCell : UITableViewCell
 
+/**
+ *  UIWebView
+ */
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+/**
+ *  访问地址
+ */
+@property (nonatomic,copy) NSString *URLString;
+/**
+ *  设备信息
+ */
+@property (nonatomic,strong) SkywareDeviceInfoModel *deviceInfo;
+/**
+ *  创建TableViewCell
+ */
 + (instancetype) createTableViewCell;
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-
-// 设备信息
-@property (nonatomic,strong) SkywareDeviceInfoModel *deviceInfo;
 
 
 @end

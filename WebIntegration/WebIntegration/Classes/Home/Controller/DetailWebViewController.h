@@ -10,7 +10,13 @@
 
 @interface DetailWebViewController : BaseWebViewController
 
-// 设备信息
+/**
+ *  设备信息
+ */
 @property (nonatomic,strong) SkywareDeviceInfoModel *deviceInfo;
+/**
+ *  访问地址
+ */
+@property (nonatomic,copy) NSString *URLString;
 
 @end

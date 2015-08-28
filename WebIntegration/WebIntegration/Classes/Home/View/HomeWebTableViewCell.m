@@ -28,21 +28,20 @@
     _jsApiTool = [[SkywareJSApiTool alloc] init];
 }
 
-- (void)layoutSubviews
+- (void)setURLString:(NSString *)URLString
 {
-    [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:@"http://wx.skyware.com.cn/demofurnace/bar.html"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
+    _URLString = URLString;
+    [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:URLString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    BOOL bol = [_jsApiTool JSApiSubStringRequestWith:request WebView:webView DeviceInfo:_deviceInfo];
-    NSLog(@"%d",bol);
-    return bol;
+    return [_jsApiTool JSApiSubStringRequestWith:request WebView:webView DeviceInfo:_deviceInfo];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSLog(@"%@",_deviceInfo);
+    //    NSLog(@"%@",_deviceInfo);
 }
 
 
