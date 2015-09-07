@@ -25,14 +25,6 @@
                                     <constraint firstAttribute="height" constant="98" id="zIh-Fq-IH9"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录手机号" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KOj-Zo-cbc">
-                                <rect key="frame" x="30" y="248" width="540" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="tTc-7L-JTG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zou-Fc-Wmj">
                                 <rect key="frame" x="30" y="303" width="540" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -76,6 +68,14 @@
                                     <action selector="loginBtnClick:" destination="ZuS-Z0-DKb" eventType="touchUpInside" id="na4-sX-vEa"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录手机号" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KOj-Zo-cbc">
+                                <rect key="frame" x="30" y="248" width="540" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="tTc-7L-JTG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fNY-q4-o44" firstAttribute="width" secondItem="zou-Fc-Wmj" secondAttribute="width" id="0Ar-Vb-ggm"/>
@@ -150,7 +150,7 @@
                                     <constraint firstAttribute="height" constant="40" id="FOC-J6-Ds0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="收到的验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2fp-AL-JiO">
                                 <rect key="frame" x="20" y="134" width="560" height="40"/>

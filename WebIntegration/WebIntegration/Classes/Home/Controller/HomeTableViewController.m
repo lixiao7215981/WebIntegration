@@ -13,12 +13,11 @@
 #import "AddDeviceViewController.h"
 #import "HomeWebTableViewCell.h"
 #import "DetailWebViewController.h"
-#import <MQTTClient/MQTTClient.h>
+#import "MQTT_Tool.h"
 
-@interface HomeTableViewController ()<MQTTSessionDelegate>
+@interface HomeTableViewController ()<MQTT_ToolDelegate>
 {
     CoreLocationTool *locationTool;
-    MQTTSession *_secction;
     SkywareJSApiTool *_jsApiTool;
     BOOL isExample;
 }
@@ -36,11 +35,10 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
     self.tableView.backgroundColor = kRGBColor(238, 238, 238, 1);
     self.tableView.separatorStyle = UITableViewScrollPositionNone;
     _jsApiTool = [[SkywareJSApiTool alloc] init];
+    
     // 创建 MQTT
-    SkywareInstanceModel *instance = [SkywareInstanceModel sharedSkywareInstanceModel];
-    _secction = [[MQTTSession alloc] initWithClientId: [NSString stringWithFormat:@"%ld",instance.app_id]];
-    [_secction setDelegate:self];
-    [_secction connectAndWaitToHost:kMQTTServerHost port:1883 usingSSL:NO];
+    MQTT_Tool *mqtt = [MQTT_Tool sharedMQTT_Tool];
+    mqtt.delegate = self;
     
     // 设置本地空气质量
     [self addHeadViewCoverView];
@@ -53,7 +51,7 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 }
 
 #pragma mark - MQTT ----Delegate
-- (void)newMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(unsigned int)mid
+- (void)MQTTnewMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos
 {
     NSLog(@"--Cell_MQTT:%@",[data JSONString]);
     SkywareMQTTModel *model = [SkywareMQTTTool conversionMQTTResultWithData:data];
@@ -64,6 +62,8 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
         }
     }];
 }
+
+
 
 - (void)getUserBindDevices
 {
@@ -81,7 +81,8 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
                 group = [BaseCellItemGroup createGroupWithHeadView:headView AndFootView:nil OrItem:nil];
             }
             [group addObjectWith:dev];
-            [_secction subscribeToTopic:kTopic(dev.device_mac) atLevel:MQTTQosLevelAtLeastOnce];
+            // 订阅设备
+            [MQTT_Tool subscribeToTopicWithMAC:dev.device_mac atLevel:0];
             [self.dataList addObject:group];
         }];
         [self.tableView reloadData];

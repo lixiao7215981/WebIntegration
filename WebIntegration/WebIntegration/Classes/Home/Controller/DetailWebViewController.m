@@ -7,12 +7,11 @@
 //
 
 #import "DetailWebViewController.h"
-#import <MQTTClient/MQTTClient.h>
+//#import "MQTT_Tool.h"
 
-@interface DetailWebViewController ()<UIWebViewDelegate,MQTTSessionDelegate>
+@interface DetailWebViewController ()<UIWebViewDelegate>
 {
     SkywareJSApiTool *_jsApiTool;
-    MQTTSession *_secction;
 }
 @end
 
@@ -25,12 +24,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.webView.scrollView.scrollEnabled = NO;
     _jsApiTool = [[SkywareJSApiTool alloc] init];
-     [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:_URLString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
+    [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:_URLString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
+    
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"shouldStartLoadWithRequest-------%ld",_secction.status);
     return [_jsApiTool JSApiSubStringRequestWith:request WebView:webView DeviceInfo:_deviceInfo];
 }
 
@@ -39,16 +38,14 @@
     _deviceInfo = deviceInfo;
     SkywareInstanceModel *instance = [SkywareInstanceModel sharedSkywareInstanceModel];
     instance.device_id = deviceInfo.device_id;
-    // 创建 MQTT
-    _secction = [[MQTTSession alloc] initWithClientId: [NSString stringWithFormat:@"%@",instance.device_id]];
-    [_secction setDelegate:self];
-    [_secction connectAndWaitToHost:kMQTTServerHost port:1883 usingSSL:NO];
-    [_secction subscribeToTopic:kTopic(deviceInfo.device_mac) atLevel:MQTTQosLevelAtLeastOnce];
+    [kNotificationCenter addObserver:self selector:@selector(MQTTNewMessageData:) name:kTopic(deviceInfo.device_mac) object:nil];
 }
 
-#pragma mark - MQTT ----Delegate
-- (void)newMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(unsigned int)mid
+#pragma mark - MQTT Notification
+
+- (void)MQTTNewMessageData:(NSNotification *) notic
 {
+    NSData *data = notic.userInfo[@"data"];
     NSLog(@"--detail_MQTT:%@",[data JSONString]);
     [_jsApiTool onRecvDevStatusData:data ToWebView:self.webView];
 }
@@ -57,7 +54,5 @@
 {
     NSLog(@"Detaildealloc");
 }
-
-
 
 @end
