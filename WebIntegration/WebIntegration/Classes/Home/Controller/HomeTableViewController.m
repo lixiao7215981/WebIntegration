@@ -13,7 +13,6 @@
 #import "AddDeviceViewController.h"
 #import "HomeWebTableViewCell.h"
 #import "DetailWebViewController.h"
-#import "MQTT_Tool.h"
 
 @interface HomeTableViewController ()<MQTT_ToolDelegate>
 {
@@ -46,24 +45,15 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
     [self addLeftRightBtn];
     
     //    [self addDataList];
-    [self getUserBindDevices];
+    //    [self getUserBindDevices];
     
 }
 
-#pragma mark - MQTT ----Delegate
-- (void)MQTTnewMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos
+- (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"--Cell_MQTT:%@",[data JSONString]);
-    SkywareMQTTModel *model = [SkywareMQTTTool conversionMQTTResultWithData:data];
-    NSArray *cells = [self.tableView visibleCells];
-    [cells enumerateObjectsUsingBlock:^(HomeWebTableViewCell *cell, NSUInteger idx, BOOL *stop) {
-        if([cell.deviceInfo.device_mac isEqualToString:model.mac]){
-            [_jsApiTool onRecvDevStatusData:data ToWebView:cell.webView];
-        }
-    }];
+    [super viewWillAppear:animated];
+    [self getUserBindDevices];
 }
-
-
 
 - (void)getUserBindDevices
 {
@@ -86,6 +76,7 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
             [self.dataList addObject:group];
         }];
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     } failure:^(SkywareResult *result) {
         isExample = YES;
         [self.dataList removeAllObjects];
@@ -93,6 +84,7 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
         BaseCellItemGroup *group = [BaseCellItemGroup createGroupWithHeadTitle:@"示例设备" AndFooterTitle:nil OrItem:@[item]];
         [self.dataList addObject:group];
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     }];
 }
 
@@ -117,6 +109,19 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
     [self.dataList addObject:group1];
     [self.dataList addObject:group2];
     [self.dataList addObject:group3];
+}
+
+#pragma mark - MQTT ----Delegate
+- (void)MQTTnewMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos
+{
+    NSLog(@"--Cell_MQTT:%@",[data JSONString]);
+    SkywareMQTTModel *model = [SkywareMQTTTool conversionMQTTResultWithData:data];
+    NSArray *cells = [self.tableView visibleCells];
+    [cells enumerateObjectsUsingBlock:^(HomeWebTableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        if([cell.deviceInfo.device_mac isEqualToString:model.mac]){
+            [_jsApiTool onRecvDevStatusData:data ToWebView:cell.webView];
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -168,10 +173,8 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
     coverHeadView.backgroundColor = kRGBColor(81, 167, 232, 1);
     [self.tableView insertSubview:coverHeadView atIndex:0];
     
-    UIView *Headview = [HomeTableHeadView craeteHeadView];
+    HomeTableHeadView *Headview = (HomeTableHeadView*) [HomeTableHeadView craeteHeadView];
     self.tableView.tableHeaderView = Headview;
-    [Headview autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
-    [Headview autoSetDimensionsToSize:CGSizeMake(kWindowWidth, 150)];
 }
 
 /**

@@ -7,7 +7,6 @@
 //
 
 #import "DetailWebViewController.h"
-//#import "MQTT_Tool.h"
 
 @interface DetailWebViewController ()<UIWebViewDelegate>
 {

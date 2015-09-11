@@ -8,6 +8,7 @@
 
 #import "MQTT_Tool.h"
 #import "SkywareSDK.h"
+
 @interface MQTT_Tool ()<MQTTSessionDelegate>
 
 @end
@@ -16,10 +17,8 @@
 
 LXSingletonM(MQTT_Tool)
 
-/**
- *  MQTT_Session
- */
 static MQTTSession *_secction;
+static NSTimer *_time;
 
 + (void)initialize
 {
@@ -31,12 +30,27 @@ static MQTTSession *_secction;
     [_secction connectAndWaitToHost:kMQTTServerHost port:1883 usingSSL:NO];
 }
 
+#pragma mark - 添加测试方法
+
++ (void)addTimeTest
+{
+    _time = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_time forMode:NSRunLoopCommonModes];
+}
+
++ (void)updateTimer:(NSTimer *) timer
+{
+    NSLog(@"MQTT_State = %ld",_secction.status);
+}
+
+#pragma mark - Method
+
 + (void) subscribeToTopicWithMAC:(NSString *)mac atLevel:(MQTTQosLevel)qosLevel
 {
     if (qosLevel == 0) {
-        [_secction subscribeToTopic:kTopic(mac) atLevel:MQTTQosLevelAtLeastOnce];
+        [_secction subscribeAndWaitToTopic:kTopic(mac) atLevel:MQTTQosLevelAtLeastOnce];
     }else{
-        [_secction subscribeToTopic:kTopic(mac) atLevel:qosLevel];
+        [_secction subscribeAndWaitToTopic:kTopic(mac) atLevel:qosLevel];
     }
 }
 
@@ -44,7 +58,6 @@ static MQTTSession *_secction;
 {
     [_secction unsubscribeTopic:mac];
 }
-
 
 #pragma mark - MQTT_ToolDelegate
 
