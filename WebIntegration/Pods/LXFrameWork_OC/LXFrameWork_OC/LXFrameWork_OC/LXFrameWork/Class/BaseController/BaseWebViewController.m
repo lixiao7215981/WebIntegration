@@ -46,9 +46,9 @@
 - (void) setUpWebView
 {
     _webView = [UIWebView newAutoLayoutView];
-    _webView.delegate = self;
     [self.view addSubview:_webView];
     [_webView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    _webView.delegate = self;
 }
 
 /**

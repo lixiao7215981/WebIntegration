@@ -540,6 +540,7 @@
 			baseConfigurationReference = 779B063E7E60D06276D51B79 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WebIntegration/Classes/Main/Lib/Pgy_SDK",
@@ -557,6 +558,7 @@
 			baseConfigurationReference = F424065027F8998A3D882D95 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WebIntegration/Classes/Main/Lib/Pgy_SDK",
