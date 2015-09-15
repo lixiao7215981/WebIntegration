@@ -1,2 +1,10 @@
 platform :ios, '7.0'
 pod 'SkywareUI'
+
+# MobShareSDK
+pod 'MobShareSDK'
+pod 'MobShareSDK/UI/iPhoneSimple'
+pod 'MobShareSDK/Connection/SinaWeibo'
+pod 'MobShareSDK/Connection/WeChat'
+pod 'MobShareSDK/Connection/QQ'
+pod 'MobShareSDK/Connection/QZone'

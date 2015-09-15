@@ -11,8 +11,8 @@
 #import <SkywareUIInstance.h>
 #import "UserLoginViewController.h"
 
-#define SMS_SDKAppKey    @"888af4137d99"
-#define SMS_SDKAppSecret  @"907cae6bb1ecc40c41182c0109b61a21"
+#define SMS_SDKAppKey    @"a61caeae67ea"
+#define SMS_SDKAppSecret  @"b285bf5ce014fc48101f86be1229f0af"
 
 @interface AppDelegate ()
 
@@ -30,16 +30,18 @@
     self.navigationController = (UINavigationController *)loginRegister;
     [self.window makeKeyAndVisible];
     
-    
     // 设置 App_id
     SkywareInstanceModel *skywareInstance = [SkywareInstanceModel sharedSkywareInstanceModel];
     skywareInstance.app_id = 1;
     
     SkywareUIInstance *UIM = [SkywareUIInstance sharedSkywareUIInstance];
-    UIM.All_button_bgColor = [UIColor blueColor];
-    UIM.All_view_bgColor = kSystemLoginViewBackageColor;
+    UIM.All_button_bgColor = kSystemAllBtnColor;
+    UIM.All_view_bgColor = kSystemAllBackageColor;
     
-    
+    LXFrameWorkInstance *LXM = [LXFrameWorkInstance sharedLXFrameWorkInstance];
+    LXM.NavigationBar_bgColor = kSystemAllBtnColor;
+    LXM.NavigationBar_textColor = [UIColor whiteColor];
+    LXM.backState = writeBase;
     
     // 启动ShareSDK 的短信功能
     [SMS_SDK registerApp:SMS_SDKAppKey withSecret:SMS_SDKAppSecret];

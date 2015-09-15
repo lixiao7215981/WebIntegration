@@ -775,6 +775,10 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+## MobShareSDK
+
+Copyright © 2012-2015 mob
+
 ## PureLayout
 
 This code is distributed under the terms and conditions of the MIT license.

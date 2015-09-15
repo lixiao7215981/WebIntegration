@@ -16,8 +16,8 @@
 #import <ImportClass.h>
 #import <SkywareSDK.h>
 
-#define kSystemLoginViewBackageColor kRGBColor(231, 231, 231, 1)
-#define kSystemRedBtnColor kRGBColor(188, 0, 24, 1)
+#define kSystemAllBackageColor kRGBColor(255, 255, 255, 1)
+#define kSystemAllBtnColor kRGBColor(81, 167, 232, 1)
 
 #endif
 #endif

@@ -820,6 +820,14 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright &#169; 2012-2015 mob</string>
+			<key>Title</key>
+			<string>MobShareSDK</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>This code is distributed under the terms and conditions of the MIT license.
 
 Copyright (c) 2014-2015 Tyler Fox
