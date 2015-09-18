@@ -31,21 +31,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    UserLoginViewController *loginRegister = [[UIStoryboard storyboardWithName:@"User" bundle:nil] instantiateInitialViewController];
-    self.window.rootViewController = loginRegister;
-    self.navigationController = (UINavigationController *)loginRegister;
-    [self.window makeKeyAndVisible];
-    
     // 设置 App_id
     SkywareInstanceModel *skywareInstance = [SkywareInstanceModel sharedSkywareInstanceModel];
     skywareInstance.app_id = 1;
-    
-    // 设置弹出框后不可操作
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    [SVProgressHUD setBackgroundColor:kRGBColor(230, 230, 230, 1)];
     
     SkywareUIInstance *UIM = [SkywareUIInstance sharedSkywareUIInstance];
     UIM.All_button_bgColor = kSystemAllBtnColor;
@@ -55,6 +43,17 @@
     LXM.NavigationBar_bgColor = kSystemAllBtnColor;
     LXM.NavigationBar_textColor = [UIColor whiteColor];
     LXM.backState = writeBase;
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    UserLoginViewController *loginRegister = [[UIStoryboard storyboardWithName:@"User" bundle:nil] instantiateInitialViewController];
+    self.window.rootViewController = loginRegister;
+    self.navigationController = (UINavigationController *)loginRegister;
+    [self.window makeKeyAndVisible];
+    
+    // 设置弹出框后不可操作
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setBackgroundColor:kRGBColor(230, 230, 230, 1)];
     
     // 启动ShareSDK 的短信功能
     [SMS_SDK registerApp:SMS_SDKAppKey withSecret:SMS_SDKAppSecret];
@@ -104,20 +103,22 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"applicationDidEnterBackground");
+    [MQTT_Tool CloseMQTTSecction];
+    NSLog(@"应用程序失去焦点的时候调用");
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    NSLog(@"applicationWillEnterForeground");
+    //     NSLog(@"程序即将进入前台的时候调用");
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
-//    [MQTT_Tool initialize];
-    NSLog(@"applicationDidBecomeActiveapplicationDidBecomeActiveapplicationDidBecomeActiveapplicationDidBecomeActive");
+    [MQTT_Tool CreateMQTTSection];
+    NSLog(@"应用程序获得焦点的时候调用");
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
