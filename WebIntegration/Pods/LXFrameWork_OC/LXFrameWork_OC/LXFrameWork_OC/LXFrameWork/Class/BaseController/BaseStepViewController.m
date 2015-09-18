@@ -122,7 +122,7 @@
     self.delegate = self;
 }
 
-#pragma mark - 代理方法需要子累重写
+#pragma mark - 代理方法需要字累重写
 - (NSArray *) titleArrayAtHeadView:(UIView *)StepView
 {
     return nil;

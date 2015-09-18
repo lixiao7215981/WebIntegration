@@ -3,7 +3,7 @@ pod 'SkywareUI'
 
 # MobShareSDK
 pod 'MobShareSDK'
-pod 'MobShareSDK/UI/iPhoneSimple'
+pod 'MobShareSDK/UI'
 pod 'MobShareSDK/Connection/SinaWeibo'
 pod 'MobShareSDK/Connection/WeChat'
 pod 'MobShareSDK/Connection/QQ'

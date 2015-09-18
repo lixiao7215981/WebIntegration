@@ -24,6 +24,9 @@
 		4EE1A1AF1B8D4E9700A84CB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1A19E1B8D4E9700A84CB8 /* main.m */; };
 		4EE1A1B51B8D54EE00A84CB8 /* HomeWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1A1B31B8D54EE00A84CB8 /* HomeWebTableViewCell.m */; };
 		4EE1A1B61B8D54EE00A84CB8 /* HomeWebTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE1A1B41B8D54EE00A84CB8 /* HomeWebTableViewCell.xib */; };
+		4EE788F91BA8FCDB00635387 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EE788F61BA8FCDB00635387 /* citydict.plist */; };
+		4EE7890C1BA9647D00635387 /* BaseCityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE7890B1BA9647D00635387 /* BaseCityListViewController.m */; };
+		4EE7890E1BA96BA700635387 /* hotCityDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EE7890D1BA96BA700635387 /* hotCityDict.plist */; };
 		BBE6CF6661D6BF6347736040 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7E8F86DC7A4FF68D347CD5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +68,10 @@
 		4EE1A1B21B8D54EE00A84CB8 /* HomeWebTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeWebTableViewCell.h; sourceTree = "<group>"; };
 		4EE1A1B31B8D54EE00A84CB8 /* HomeWebTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeWebTableViewCell.m; sourceTree = "<group>"; };
 		4EE1A1B41B8D54EE00A84CB8 /* HomeWebTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWebTableViewCell.xib; sourceTree = "<group>"; };
+		4EE788F61BA8FCDB00635387 /* citydict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = citydict.plist; sourceTree = "<group>"; };
+		4EE7890A1BA9647D00635387 /* BaseCityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCityListViewController.h; sourceTree = "<group>"; };
+		4EE7890B1BA9647D00635387 /* BaseCityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCityListViewController.m; sourceTree = "<group>"; };
+		4EE7890D1BA96BA700635387 /* hotCityDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCityDict.plist; sourceTree = "<group>"; };
 		779B063E7E60D06276D51B79 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8E7E8F86DC7A4FF68D347CD5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F424065027F8998A3D882D95 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,10 +167,14 @@
 		4EE1A1851B8D4E9700A84CB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4EE788F61BA8FCDB00635387 /* citydict.plist */,
 				4EE1A1861B8D4E9700A84CB8 /* HomeTableViewController.h */,
 				4EE1A1871B8D4E9700A84CB8 /* HomeTableViewController.m */,
 				4E57EBDD1B8DC90B00AAFC49 /* DetailWebViewController.h */,
 				4E57EBDE1B8DC90B00AAFC49 /* DetailWebViewController.m */,
+				4EE7890A1BA9647D00635387 /* BaseCityListViewController.h */,
+				4EE7890B1BA9647D00635387 /* BaseCityListViewController.m */,
+				4EE7890D1BA96BA700635387 /* hotCityDict.plist */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,7 +385,9 @@
 				4EE1A1AA1B8D4E9700A84CB8 /* HomeTableHeadView.xib in Resources */,
 				4EE1A1AE1B8D4E9700A84CB8 /* Info.plist in Resources */,
 				4EE1A16B1B8D4E0100A84CB8 /* Images.xcassets in Resources */,
+				4EE788F91BA8FCDB00635387 /* citydict.plist in Resources */,
 				4EE1A1A81B8D4E9700A84CB8 /* HomePurifierTableViewCell.xib in Resources */,
+				4EE7890E1BA96BA700635387 /* hotCityDict.plist in Resources */,
 				4EE1A1A61B8D4E9700A84CB8 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +446,7 @@
 				4EE1A1B51B8D54EE00A84CB8 /* HomeWebTableViewCell.m in Sources */,
 				4EE1A1A51B8D4E9700A84CB8 /* HomeTableViewController.m in Sources */,
 				4EE1A1A91B8D4E9700A84CB8 /* HomeTableHeadView.m in Sources */,
+				4EE7890C1BA9647D00635387 /* BaseCityListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

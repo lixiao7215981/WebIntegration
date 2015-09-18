@@ -70,6 +70,7 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
                 headView.backgroundColor = [UIColor clearColor];
                 group = [BaseCellItemGroup createGroupWithHeadView:headView AndFootView:nil OrItem:nil];
             }
+            
             [group addObjectWith:dev];
             // 订阅设备
             [MQTT_Tool subscribeToTopicWithMAC:dev.device_mac atLevel:0];

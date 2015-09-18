@@ -12,11 +12,13 @@
 
 @property (nonatomic,copy) NSString *SubLocality;
 @property (nonatomic,copy) NSString *CountryCode;
+/*** 省 */
 @property (nonatomic,copy) NSString *Street;
 @property (nonatomic,copy) NSString *State;
 @property (nonatomic,copy) NSString *Name;
 @property (nonatomic,copy) NSString *Thoroughfare;
 @property (nonatomic,copy) NSString *Country;
+/*** 市 */
 @property (nonatomic,copy) NSString *City;
 
 //@property (nonatomic,copy) id FormattedAddressLines;
