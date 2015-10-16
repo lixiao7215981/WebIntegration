@@ -18,7 +18,6 @@
 {
     CoreLocationTool *locationTool;
     SkywareJSApiTool *_jsApiTool;
-    BOOL isExample;
 }
 @end
 
@@ -57,8 +56,9 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 
 - (void)getUserBindDevices
 {
+    WebInterest *interest = [WebInterest sharedWebInterest];
     [SkywareDeviceManagement DeviceGetAllDevicesSuccess:^(SkywareResult *result) {
-        isExample = NO;
+        interest.isExample = NO;
         [self.dataList removeAllObjects];
         NSArray *deviceArray = [SkywareDeviceInfoModel objectArrayWithKeyValuesArray:result.result];
         [deviceArray enumerateObjectsUsingBlock:^(SkywareDeviceInfoModel *dev, NSUInteger idx, BOOL *stop) {
@@ -79,7 +79,7 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
     } failure:^(SkywareResult *result) {
-        isExample = YES;
+        interest.isExample = YES;
         [self.dataList removeAllObjects];
         BaseArrowCellItem *item = [BaseArrowCellItem createBaseCellItemWithIcon:nil AndTitle:nil SubTitle:nil ClickOption:nil];
         BaseCellItemGroup *group = [BaseCellItemGroup createGroupWithHeadTitle:@"示例设备" AndFooterTitle:nil OrItem:@[item]];
@@ -129,11 +129,12 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    WebInterest *interest = [WebInterest sharedWebInterest];
     HomeWebTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeTableViewCell];
     if (cell == nil) {
         cell = [HomeWebTableViewCell createTableViewCell];
     }
-    if (isExample) {
+    if (interest.isExample) {
         cell.URLString = @"http://wx.skyware.com.cn/demofurnace/examplebar.html";
         
     }else{
@@ -152,8 +153,9 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    WebInterest *interest = [WebInterest sharedWebInterest];
     DetailWebViewController *detail = [[DetailWebViewController alloc] init];
-    if (isExample) {
+    if (interest.isExample) {
         detail.URLString = @"http://wx.skyware.com.cn/demofurnace/exampleindex.html";
         [self.navigationController pushViewController:detail animated:YES];
     }else{

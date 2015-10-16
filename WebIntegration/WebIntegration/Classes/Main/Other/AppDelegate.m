@@ -38,6 +38,16 @@
     SkywareUIInstance *UIM = [SkywareUIInstance sharedSkywareUIInstance];
     UIM.All_button_bgColor = kSystemAllBtnColor;
     UIM.All_view_bgColor = kSystemAllBackageColor;
+    UIM.Device_resetTitle = @"发现空气净化器";
+    UIM.Device_resetContent = @"长按WiFi键后，发现指示灯闪烁";
+    UIM.Device_setting_error = @"配网失败，请稍后重试...";
+    NSMutableArray *imgArray = [NSMutableArray array];
+    for (int i=0; i < 5; i++) {
+        NSString *name = [NSString stringWithFormat:@"round%d.png",i];
+        [imgArray addObject:[UIImage imageNamed:name]];
+    }
+    UIM.Device_smartLink_array = imgArray;
+    
     
     LXFrameWorkInstance *LXM = [LXFrameWorkInstance sharedLXFrameWorkInstance];
     LXM.NavigationBar_bgColor = kSystemAllBtnColor;

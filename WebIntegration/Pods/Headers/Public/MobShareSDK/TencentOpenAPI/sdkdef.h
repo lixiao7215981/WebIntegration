@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Extend/QQConnectSDK/TencentOpenAPI.framework/Headers/sdkdef.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Extend/QQConnectSDK/TencentOpenAPI.framework/Headers/sdkdef.h

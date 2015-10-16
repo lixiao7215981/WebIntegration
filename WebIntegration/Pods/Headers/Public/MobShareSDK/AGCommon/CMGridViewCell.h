@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Core/AGCommon.framework/Headers/CMGridViewCell.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Core/AGCommon.framework/Headers/CMGridViewCell.h

@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/SinaWeiboConnection.framework/Headers/SSSinaWeiboErrorInfo.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/SinaWeiboConnection.framework/Headers/SSSinaWeiboErrorInfo.h

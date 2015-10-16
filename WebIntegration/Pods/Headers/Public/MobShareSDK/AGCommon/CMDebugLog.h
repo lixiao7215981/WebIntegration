@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Core/AGCommon.framework/Headers/CMDebugLog.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Core/AGCommon.framework/Headers/CMDebugLog.h

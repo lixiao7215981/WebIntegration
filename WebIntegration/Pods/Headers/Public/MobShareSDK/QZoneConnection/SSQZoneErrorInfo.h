@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/QZoneConnection.framework/Headers/SSQZoneErrorInfo.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/QZoneConnection.framework/Headers/SSQZoneErrorInfo.h

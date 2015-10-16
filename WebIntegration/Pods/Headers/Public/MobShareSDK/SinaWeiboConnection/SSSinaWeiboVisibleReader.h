@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/SinaWeiboConnection.framework/Headers/SSSinaWeiboVisibleReader.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/SinaWeiboConnection.framework/Headers/SSSinaWeiboVisibleReader.h

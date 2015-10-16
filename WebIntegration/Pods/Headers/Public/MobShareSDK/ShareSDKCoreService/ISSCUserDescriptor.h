@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Core/ShareSDKCoreService.framework/Headers/ISSCUserDescriptor.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Core/ShareSDKCoreService.framework/Headers/ISSCUserDescriptor.h

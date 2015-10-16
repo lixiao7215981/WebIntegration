@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/QQConnection.framework/Headers/QQConnection.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/QQConnection.framework/Headers/QQConnection.h

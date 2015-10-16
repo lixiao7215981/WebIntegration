@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/UI/ShareSDKiPhoneDefaultShareViewUI.framework/Headers/ShareSDKiPhoneDefaultShareViewUI.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/UI/ShareSDKiPhoneDefaultShareViewUI.framework/Headers/ShareSDKiPhoneDefaultShareViewUI.h

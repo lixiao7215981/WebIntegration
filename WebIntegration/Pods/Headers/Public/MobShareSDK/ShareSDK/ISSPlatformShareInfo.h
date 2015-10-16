@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/ShareSDK.framework/Headers/ISSPlatformShareInfo.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/ShareSDK.framework/Headers/ISSPlatformShareInfo.h

@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/SinaWeiboConnection.framework/Headers/ISSSinaWeiboApp.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/SinaWeiboConnection.framework/Headers/ISSSinaWeiboApp.h

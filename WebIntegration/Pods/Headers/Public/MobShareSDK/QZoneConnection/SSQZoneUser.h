@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/QZoneConnection.framework/Headers/SSQZoneUser.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/QZoneConnection.framework/Headers/SSQZoneUser.h

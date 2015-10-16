@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/ShareSDK.framework/Headers/NSArray+ShareSDK.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/ShareSDK.framework/Headers/NSArray+ShareSDK.h

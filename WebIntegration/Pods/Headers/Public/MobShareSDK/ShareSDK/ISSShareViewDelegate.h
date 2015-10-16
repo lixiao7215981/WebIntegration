@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/ShareSDK.framework/Headers/ISSShareViewDelegate.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/ShareSDK.framework/Headers/ISSShareViewDelegate.h

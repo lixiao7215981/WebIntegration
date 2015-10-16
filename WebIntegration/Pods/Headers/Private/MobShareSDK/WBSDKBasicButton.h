@@ -1,1 +1,1 @@
-../../../MobShareSDK/ShareSDK/Extend/SinaWeiboSDK/WBSDKBasicButton.h
+../../../MobShareSDK/Official-Sources/ShareSDK/Extend/SinaWeiboSDK/WBSDKBasicButton.h

@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Connection/WeChatConnection.framework/Headers/ISSWeChatApp.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Connection/WeChatConnection.framework/Headers/ISSWeChatApp.h

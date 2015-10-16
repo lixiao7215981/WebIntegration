@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Core/ShareSDKCoreService.framework/Headers/ISSCOpenApp.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Core/ShareSDKCoreService.framework/Headers/ISSCOpenApp.h

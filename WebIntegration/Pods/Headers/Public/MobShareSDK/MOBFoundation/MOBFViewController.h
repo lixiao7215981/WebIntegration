@@ -1,1 +1,1 @@
-../../../../MobShareSDK/ShareSDK/Core/MOBFoundation.framework/Headers/MOBFViewController.h
+../../../../MobShareSDK/Official-Sources/ShareSDK/Core/MOBFoundation.framework/Headers/MOBFViewController.h

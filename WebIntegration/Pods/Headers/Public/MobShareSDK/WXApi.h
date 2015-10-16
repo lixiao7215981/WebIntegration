@@ -1,1 +1,1 @@
-../../../MobShareSDK/ShareSDK/Extend/WeChatSDK/WXApi.h
+../../../MobShareSDK/Official-Sources/ShareSDK/Extend/WeChatSDK/WXApi.h

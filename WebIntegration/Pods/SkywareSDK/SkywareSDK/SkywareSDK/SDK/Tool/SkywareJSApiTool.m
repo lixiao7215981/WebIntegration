@@ -53,9 +53,11 @@
             }else if([str isEqualToString:@"goback"]){
                 [KBaseDelegate.navigationController popViewControllerAnimated:YES];
             }else if ([str isEqualToString:@"gomenu"]){
-                [self showMenuActionSheet];
+                if ([self.delegate respondsToSelector:@selector(SkywareJSApiWillShowMenu:)]) {
+                    [self.delegate SkywareJSApiWillShowMenu:self];
+                }
             }else if ([str isEqualToString:@"goshare"]){
-//                [SVProgressHUD showSuccessWithStatus:@"敬请期待!"];
+                //                [SVProgressHUD showSuccessWithStatus:@"敬请期待!"];
                 [self goShare];
             }
         }];
@@ -99,14 +101,6 @@
                                     NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
                                 }
                             }];
-}
-
-- (void) showMenuActionSheet
-{
-    UIActionSheet *seet =  [[UIActionSheet alloc] initWithTitle:@"更多" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"修改设备名称",@"检查固件升级",@"解除连接",@"反馈", nil] ;
-    
-    [seet showInView:[UIWindow getCurrentWindow]];
-    
 }
 
 - (void) getMethodWithTypeArray:(NSArray *) typeArray WebView:(UIWebView *) webView WithDeviceInfo:(SkywareDeviceInfoModel *) deviceInfo
