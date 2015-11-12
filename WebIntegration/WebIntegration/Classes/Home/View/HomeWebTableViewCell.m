@@ -31,7 +31,8 @@
 - (void)setURLString:(NSString *)URLString
 {
     _URLString = URLString;
-    [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:URLString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
+        [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:URLString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_URLString]]];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

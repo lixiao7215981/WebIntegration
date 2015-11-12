@@ -44,14 +44,15 @@ static NSString * const HomeTableViewCell = @"HomeWebTableViewCell";
     [self addLeftRightBtn];
     
     //    [self addDataList];
-    //    [self getUserBindDevices];
+    [self getUserBindDevices];
     
+    [kNotificationCenter addObserver:self selector:@selector(getUserBindDevices) name:kDeviceRelseaseUserRefreshTableView object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getUserBindDevices];
+    //    [self getUserBindDevices];
 }
 
 - (void)getUserBindDevices

@@ -216,6 +216,7 @@
     [params setObject:_deviceInfo.device_mac forKey:@"device_mac"];
     [SkywareDeviceManagement DeviceBindUser:params Success:^(SkywareResult *result) {
         [SVProgressHUD showSuccessWithStatus:@"恭喜您，绑定成功"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDeviceRelseaseUserRefreshTableView object:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(SkywareResult *result) {
         [SVProgressHUD showErrorWithStatus:@"绑定失败，请稍后重试"];

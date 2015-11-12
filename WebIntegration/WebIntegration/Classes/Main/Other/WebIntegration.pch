@@ -17,6 +17,7 @@
 #import <SkywareSDK.h>
 
 #import "WebInterest.h"
+#import "WebIntegrationConst.h"
 
 #define WeixinAppId         @"wxb243a421ddef2ab2"
 #define WeixinAppSecret     @"e2f5a5168efcd646c95d292f8231e88e"

@@ -26,8 +26,18 @@
     self.webView.scrollView.scrollEnabled = NO;
     _jsApiTool = [[SkywareJSApiTool alloc] init];
     _jsApiTool.delegate = self;
+//    [self setUpHeadWeaterView];
     [self.webView loadRequest:[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:_URLString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10]];
-    
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_URLString]]];
+}
+
+- (void)setUpHeadWeaterView
+{
+    UIImageView *headImg = [UIImageView newAutoLayoutView];
+    headImg.image = [UIImage imageNamed:@"fine_weater"];
+    [self.view insertSubview:headImg atIndex:0];
+    [headImg autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
+    [headImg autoSetDimension:ALDimensionHeight toSize:400];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
